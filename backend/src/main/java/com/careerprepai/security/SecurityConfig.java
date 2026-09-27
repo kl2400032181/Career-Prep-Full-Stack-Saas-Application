@@ -66,7 +66,10 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(
-                List.of("http://localhost:5174")
+                List.of(
+                        "http://localhost:5174",
+                        "https://career-prep-full-stack-saas-application.vercel.app"
+                )
         );
 
         configuration.setAllowedMethods(
