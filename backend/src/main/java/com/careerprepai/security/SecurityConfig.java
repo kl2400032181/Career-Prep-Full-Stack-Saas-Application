@@ -68,7 +68,8 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(
                 List.of(
                         "http://localhost:5174",
-                        "https://career-prep-full-stack-saas-application.vercel.app"
+                        "https://career-prep-full-stack-saas-application.vercel.app",
+                        "https://career-prep-full-stack-saas-application-6ivruch9.vercel.app"
                 )
         );
 
