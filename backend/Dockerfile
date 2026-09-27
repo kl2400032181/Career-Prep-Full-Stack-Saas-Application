@@ -2,8 +2,9 @@ FROM eclipse-temurin:18-jdk
 
 WORKDIR /app
 
-COPY . .
+COPY backend/ .
 
+RUN sed -i 's/\r$//' mvnw
 RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests=true
 
