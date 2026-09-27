@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import Card from "../Components/common/Card";
 import Button from "../Components/common/Button";
 import Badge from "../Components/common/Badge";
-import Modal from "../components/common/Modal";
+import Modal from "../Components/common/Modal";
 import api from "../services/api";
 
 function getScoreClass(score) {
