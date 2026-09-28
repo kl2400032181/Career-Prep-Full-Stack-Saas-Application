@@ -840,6 +840,13 @@ and I can track my interview preparation."
 The project combines **full-stack development, authentication, database management, document processing, REST APIs, and generative AI** into a practical career-preparation application.
 
 ---
+ Project Frontend — Vercel
+https://career-prep-full-stack-saas-application-gsuh0vbzz.vercel.app/
+Project backend Link:
+https://career-prep-full-stack-saas-application.onrender.com/api/health
+Backend — Render
+
+https://career-prep-full-stack-saas-application.onrender.com 
 
 # 👩‍💻 Project Highlights
 
