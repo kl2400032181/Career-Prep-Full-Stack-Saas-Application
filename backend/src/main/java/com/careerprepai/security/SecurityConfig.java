@@ -1,14 +1,16 @@
 package com.careerprepai.security;
 
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.http.HttpMethod;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -52,8 +54,11 @@ public class SecurityConfig {
 
             .authorizeHttpRequests(auth -> auth
 
-                // Allow CORS preflight requests
-                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                // CORS preflight
+                .requestMatchers(
+                    HttpMethod.OPTIONS,
+                    "/**"
+                ).permitAll()
 
                 // Public endpoints
                 .requestMatchers(
@@ -61,7 +66,7 @@ public class SecurityConfig {
                     "/api/auth/**"
                 ).permitAll()
 
-                // Everything else requires JWT
+                // Protected endpoints
                 .anyRequest().authenticated()
             )
 
@@ -82,15 +87,10 @@ public class SecurityConfig {
         CorsConfiguration configuration =
                 new CorsConfiguration();
 
-        configuration.setAllowedOrigins(
+        configuration.setAllowedOriginPatterns(
             List.of(
                 "http://localhost:5174",
-
-                "https://career-prep-full-stack-saas-application.vercel.app",
-
-                "https://career-prep-full-stack-saas-application-6ivruch9.vercel.app",
-
-                "https://career-prep-full-stack-saas-application-8yju2li9.vercel.app"
+                "https://*.vercel.app"
             )
         );
 
