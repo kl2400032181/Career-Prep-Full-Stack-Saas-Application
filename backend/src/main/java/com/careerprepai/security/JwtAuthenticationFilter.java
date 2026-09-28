@@ -30,9 +30,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             FilterChain filterChain)
             throws ServletException, IOException {
 
+        // Allow CORS preflight requests
+        if (request.getMethod().equalsIgnoreCase("OPTIONS")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String authorizationHeader =
                 request.getHeader("Authorization");
 
+        // No JWT token → continue normally
         if (authorizationHeader == null ||
                 !authorizationHeader.startsWith("Bearer ")) {
 
@@ -40,9 +47,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
+        // Extract JWT token
         String token =
                 authorizationHeader.substring(7);
 
+        // Validate JWT
         if (jwtService.isTokenValid(token)) {
 
             String email =
